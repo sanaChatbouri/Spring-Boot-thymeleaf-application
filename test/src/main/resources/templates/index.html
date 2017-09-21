@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Software Technology</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{vendor/bootstrap/css/bootstrap.min.css}"/>
+  
+
+    <!-- Custom fonts for this template -->
+     <link rel="stylesheet" th:href="@{vendor/font-awesome/css/font-awesome.min.css}"/>
+    <link href="" rel="stylesheet" type="text/css"/>
+
+    <!-- Plugin CSS -->
+     <link rel="stylesheet" th:href="@{vendor/datatables/dataTables.bootstrap4.css}"/>
+   
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" th:href="@{css/sb-admin.css}"/>
+    
+   
+ 
+  <style >
+ 
+  </style>
+ 
+
+
+   
+      
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"> </a>
+        <div class="collapse navbar-collapse" id="navbarExample">
+            <ul class="sidebar-nav navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#chart"><i class="fa fa-fw fa-area-chart"></i> Charts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#table"><i class="fa fa-fw fa-table"></i> Tables</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti"><i class="fa fa-fw fa-sitemap"></i> Menu Levels</a>
+             
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mr-lg-2" href="#" id="messagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-fw fa-envelope"></i> <span class="hidden-lg-up">Messages <span class="badge badge-pill badge-primary">12 New</span></span>
+                        <span class="new-indicator text-primary hidden-md-down"><i class="fa fa-fw fa-circle"></i><span class="number">12</span></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+                        <h6 class="dropdown-header">New Messages:</h6>
+                        <div class="dropdown-divider"></div>
+                        
+                       
+                       
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mr-lg-2" href="#" id="alertsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-fw fa-bell"></i> <span class="hidden-lg-up">Alerts <span class="badge badge-pill badge-warning">6 New</span></span>
+                        <span class="new-indicator text-warning hidden-md-down"><i class="fa fa-fw fa-circle"></i><span class="number">6</span></span>
+                    </a>
+                   
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for..."/>
+                            <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="homepage.html"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-wrapper py-3">
+
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs -->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item active">My Dashboard</li>
+            </ol>
+
+            <!-- Icon Cards -->
+            <div class="row">
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card card-inverse card-primary o-hidden h-100">
+                        <div class="card-block">
+                            <div class="card-block-icon">
+                                <i class="fa fa-fw fa-comments"></i>
+                            </div>
+                            <div class="mr-5">
+                                <h1 th:text="${nbreMessage}"></h1> Messages!
+                            </div>
+                        </div>
+                        <a href="#messages" class="card-footer clearfix small z-1">
+                            <span class="float-left">View Details</span>
+                            <span class="float-right"><i class="fa fa-angle-right"></i></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card card-inverse card-success o-hidden h-100">
+                        <div class="card-block">
+                            <div class="card-block-icon">
+                                <i class="fa fa-fw fa-list"></i>
+                            </div>
+                            <div class="mr-5">
+                             <h1 th:text="${nbreAppel}"></h1> Tasks!
+                            </div>
+                        </div>
+                        <a href="#table" class="card-footer clearfix small z-1">
+                            <span class="float-left">View Details</span>
+                            <span class="float-right"><i class="fa fa-angle-right"></i></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card card-inverse card-warning o-hidden h-100">
+                        <div class="card-block">
+                            <div class="card-block-icon">
+                                <i class="fa fa-fw fa-shopping-cart"></i>
+                            </div>
+                            <div class="mr-5">
+                             <h1 th:text="${nbreActualite}"></h1> Orders!
+                            </div>
+                        </div>
+                        <a href="#" class="card-footer clearfix small z-1">
+                            <span class="float-left">View Details</span>
+                            <span class="float-right"><i class="fa fa-angle-right"></i></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card card-inverse card-danger o-hidden h-100">
+                        <div class="card-block">
+                            <div class="card-block-icon">
+                                <i class="fa fa-fw fa-support"></i>
+                            </div>
+                            <div class="mr-5">
+                                13 New Tickets!
+                            </div>
+                        </div>
+                        <a href="#" class="card-footer clearfix small z-1">
+                            <span class="float-left">View Details</span>
+                            <span class="float-right"><i class="fa fa-angle-right"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Area Chart Example -->
+            <div class="card mb-3">
+                <div id="chart" class="card-header">
+                    <i class="fa fa-area-chart"></i> Area Chart Example
+                </div>
+                <div class="card-block">
+                    <canvas id="myAreaChart" width="100%" height="30"></canvas>
+                </div>
+                <div class="card-footer small text-muted">
+                    Updated yesterday at 11:59 PM
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-8">
+
+                    <!-- Example Bar Chart Card -->
+               <div id="messages" class="card mb-3">
+                        <div class="card-header">
+                            <i class="fa fa-bell-o"></i> Messages
+                        </div>
+                        <div class="list-group list-group-flush small">
+                        <table class="table table-bordered"  width="100%" id="msgtab" cellspacing="0">
+                     
+
+             <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Message</th>
+                                    <th> Delete</th>
+                     </tr>
+                     </thead>
+                          <tbody>
+                            <tr  th:each="message : ${msgs}">
+                          <td th:text="${message.name}"> </td> 
+                           <td th:text="${message.email}"> </td> 
+                           <td th:text="${message.comment}"></td>
+                             <td><a th:href="@{/message/delete/{id}(id=${message.id})}" >Delete</a></td>
+                
+                            </tr>
+                             </tbody>
+                        </table>
+                                           
+                        <div class="card-footer small text-muted">
+                            Updated yesterday at 11:59 PM
+                        </div>
+                    </div>
+                </div>
+                        <div class="card-footer small text-muted">
+                            Updated yesterday at 11:59 PM
+                        </div>
+                    </div>
+
+                    <!-- Card Columns Example Social Feed -->
+                    <div class="card-columns">
+
+                        <!-- Example Social Card -->
+                        <div class="card mb-3">
+                            <a href="#">
+                                <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=610" alt=""/>
+                            </a>
+                            <div class="card-block">
+                                <h6 class="card-title mb-1"><a href="#">David Miller</a></h6>
+                                <p class="card-text small">These waves are looking pretty good today! <a href="#">#surfsup</a></p>
+                            </div>
+                            <hr class="my-0"/>
+                            <div class="card-block py-2 small">
+                                <a class="mr-3 d-inline-block" href="#">
+                                    <i class="fa fa-fw fa-thumbs-up"></i> Like
+                                </a>
+                                <a class="mr-3 d-inline-block" href="#">
+                                    <i class="fa fa-fw fa-comment"></i> Comment
+                                </a>
+                                <a class="d-inline-block" href="#">
+                                    <i class="fa fa-fw fa-share"></i> Share
+                                </a>
+                            </div>
+                            <hr class="my-0"/>
+                            <div class="card-block small bg-faded">
+                                <div class="media">
+                                    <img class="d-flex mr-3" src="http://placehold.it/45x45" alt=""/>
+                                    <div class="media-body">
+                                        <h6 class="mt-0 mb-1"><a href="#">John Smith</a></h6> Very nice! I wish I was there! That looks amazing!
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <a href="#">Like</a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                ·
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#">Reply</a>
+                                            </li>
+                                        </ul>
+                                        <div class="media mt-3">
+                                            <a class="d-flex pr-3" href="#">
+                                                <img src="http://placehold.it/45x45" alt=""/>
+                                            </a>
+                                            <div class="media-body">
+                                                <h6 class="mt-0 mb-1"><a href="#">David Miller</a></h6> Next time for sure!
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a href="#">Like</a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        ·
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a href="#">Reply</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer small text-muted">
+                                Posted 32 mins ago
+                            </div>
+                        </div>
+
+                        <!-- Example Social Card -->
+                        <div class="card mb-3">
+                            <a href="#">
+                                <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=180" alt=""/>
+                            </a>
+                            <div class="card-block">
+                                <h6 class="card-title mb-1"><a href="#">John Smith</a></h6>
+                                <p class="card-text small">Another day at the office... <a href="#">#workinghardorhardlyworking</a></p>
+                            </div>
+                            <hr class="my-0"/>
+                            <div class="card-block py-2 small">
+                                <a class="mr-3 d-inline-block" href="#">
+                                    <i class="fa fa-fw fa-thumbs-up"></i> Like
+                                </a>
+                                <a class="mr-3 d-inline-block" href="#">
+                                    <i class="fa fa-fw fa-comment"></i> Comment
+                                </a>
+                                <a class="d-inline-block" href="#">
+                                    <i class="fa fa-fw fa-share"></i> Share
+                                </a>
+                            </div>
+                            <hr class="my-0"/>
+                            <div class="card-block small bg-faded">
+                                <div class="media">
+                                    <img class="d-flex mr-3" src="http://placehold.it/45x45" alt=""/>
+                                    <div class="media-body">
+                                        <h6 class="mt-0 mb-1"><a href="#">Jessy Lucas</a></h6> Where did you get that camera?! I want one!
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <a href="#">Like</a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                ·
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#">Reply</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer small text-muted">
+                                Posted 46 mins ago
+                            </div>
+                        </div>
+
+                        <!-- Example Social Card -->
+                        <div class="card mb-3">
+                            <a href="#">
+                                <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=281" alt=""/>
+                            </a>
+                            <div class="card-block">
+                                <h6 class="card-title mb-1"><a href="#">Jeffery Wellings</a></h6>
+                                <p class="card-text small">Nice shot from the skate park! <a href="#">#kickflip</a> <a href="#">#holdmybeer</a> <a href="#">#igotthis</a></p>
+                            </div>
+                            <hr class="my-0"/>
+                            <div class="card-block py-2 small">
+                                <a class="mr-3 d-inline-block" href="#">
+                                    <i class="fa fa-fw fa-thumbs-up"></i> Like
+                                </a>
+                                <a class="mr-3 d-inline-block" href="#">
+                                    <i class="fa fa-fw fa-comment"></i> Comment
+                                </a>
+                                <a class="d-inline-block" href="#">
+                                    <i class="fa fa-fw fa-share"></i> Share
+                                </a>
+                            </div>
+                            <div class="card-footer small text-muted">
+                                Posted 1 hr ago
+                            </div>
+                        </div>
+
+                        <!-- Example Social Card -->
+                        <div class="card mb-3">
+                            <a href="#">
+                                <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=185" alt=""/>
+                            </a>
+                            <div class="card-block">
+                    
+                                <h6 class="card-title mb-1"><a href="#">David Miller</a></h6>
+                                <p class="card-text small">It's hot, and I might be lost... <a href="#">#desert</a> <a href="#">#water</a> <a href="#">#anyonehavesomewater</a> <a href="#">#noreally</a> <a href="#">#thirsty</a> <a href="#">#dehydration</a></p>
+                            </div>
+                            <hr class="my-0"/>
+                            <div class="card-block py-2 small">
+                                <a class="mr-3 d-inline-block" href="#">
+                                    <i class="fa fa-fw fa-thumbs-up"></i> Like
+                                </a>
+                                <a class="mr-3 d-inline-block" href="#">
+                                    <i class="fa fa-fw fa-comment"></i> Comment
+                                </a>
+                                <a class="d-inline-block" href="#">
+                                    <i class="fa fa-fw fa-share"></i> Share
+                                </a>
+                            </div>
+                            <hr class="my-0"/>
+                            <div class="card-block small bg-faded">
+                                <div class="media">
+                                    <img class="d-flex mr-3" src="http://placehold.it/45x45" alt=""/>
+                                    <div class="media-body">
+                                        <h6 class="mt-0 mb-1"><a href="#">John Smith</a></h6> The oasis is a mile that way, or is that just a mirage?
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <a href="#">Like</a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                ·
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#">Reply</a>
+                                            </li>
+                                        </ul>
+                                        <div class="media mt-3">
+                                            <a class="d-flex pr-3" href="#">
+                                                <img src="http://placehold.it/45x45" alt=""/>
+                                            </a>
+                                            <div class="media-body">
+                                                <h6 class="mt-0 mb-1"><a href="#">David Miller</a></h6>
+                                                <img class="img-fluid w-100 mb-1" src="https://unsplash.it/700/450?image=789" alt=""/> I'm saved, I found a cactus. How do I open this thing?
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a href="#">Like</a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        ·
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a href="#">Reply</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer small text-muted">
+                                Posted yesterday
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /Card Columns -->
+
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Example Notifications Card -->
+                   
+            </div>
+            
+  
+  
+   <div class="container" >
+
+    <form class="well form-horizontal" th:action="@{/team}" th:object="${team}" method="post"  id="contact_form">
+<fieldset>
+
+<!-- Form Name -->
+<legend><center><h2><b>list of services for each team</b></h2></center></legend><br></br>
+   
+  
+  <div class="form-group">
+  <label class="col-md-4 control-label" >service Id</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input th:field="*{serviceid }" placeholder="service id" class="form-control"  type="text"/>
+    </div>
+  </div>
+</div>
+  
+  <div class="form-group"> 
+  <label class="col-md-4 control-label">Team</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select   th:field="*{team_code}" class="form-control selectpicker">
+      <option>Select team id</option>
+      <option >team1</option>
+      <option >team2</option>
+      <option>team3</option>
+      <option >team4</option>
+    </select>
+  </div>
+</div>
+</div>
+
+
+<!-- Select Basic -->
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4"><br></br>
+
+  <button type="submit" class="btn btn-warning" >Effect <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+  </div>
+  
+</fieldset>
+</form>
+</div>
+<br></br>
+ <div class="box0">
+  <div class="box1">
+        <table class="table table-bordered" width="100%" id="team" cellspacing="0">
+                           <thead>
+                                <tr>
+                                    <th> services id</th>
+                                    <th>team code</th>
+                                     <th>Approve</th>
+                                 </tr>
+                            </thead>
+                            <tbody>
+                        
+                           </tbody>
+                        </table>
+     
+           </div>
+           <div class="box2">
+           </div>
+</div>
+            <!-- Example Tables Card -->
+          
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fa fa-table"></i> Services Table
+                </div>
+                <div class="card-block">
+                    <div  id="table" class="table-responsive">
+              <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+                           <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Service code</th>
+                                    <th>description</th>
+                                    <th>answer</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                             <tr  th:each="appel : ${list}">
+                             <td th:text="${appel.id}"></td>
+                           <td th:text="${appel.serviceCode}"></td>
+                             <td th:text="${appel.description}"></td>
+                             <td th:text="${appel.answer}"></td>
+                             <td><a th:href="@{'/edit/' + ${appel.id}}">edit</a></td>
+                              <td><a th:href="@{/appel/delete/{id}(id=${appel.id})}" onclick="return confirm('are you sure?')" >Delete</a></td>
+                              </tr>
+                            </tbody>
+                        </table>
+
+ 
+                    </div>
+                </div>
+                <div class="card-footer small text-muted">
+                    Updated yesterday at 11:59 PM
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- /.content-wrapper -->
+
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+  
+    
+   
+
+
+    
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" th:src="@{vendor/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{vendor/tether/tether.min.js}"></script>
+    <script type="text/javascript" th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
+    
+
+    <!-- Plugin JavaScript -->
+    <script type="text/javascript" th:src="@{vendor/jquery-easing/jquery.easing.min.js}"></script>
+    <script type="text/javascript" th:src="@{vendor/chart.js/Chart.min.js}"></script>
+    <script type="text/javascript" th:src="@{vendor/datatables/jquery.dataTables.js}"></script>
+    <script type="text/javascript" th:src="@{vendor/datatables/dataTables.bootstrap4.js}"></script>
+    
+    
+
+    <!-- Custom scripts for this template -->
+     <script type="text/javascript" th:src="@{js/sb-admin.min.js}"></script>
+   
+
+</body>
+
+</html>

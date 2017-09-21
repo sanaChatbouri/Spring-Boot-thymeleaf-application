@@ -1,0 +1,72 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>sotwareTechnology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Enquiry Form Widget Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- css files -->
+<link rel="stylesheet" type='text/css' media="all" th:href="@{/css/style2.css}" />
+
+<!-- /css files -->
+<!-- font files -->
+<link rel="stylesheet" type='text/css' media="all" th:href="@{//fonts.googleapis.com/css?family=Exo+2:400,100,200,300,500,600,700,800,900}"/>
+<link rel="stylesheet" type='text/css' media="all" th:href="@{//fonts.googleapis.com/css?family=Titillium+Web:400,200,300,600,700,900}"/>
+
+
+<!-- /font files -->
+</head>
+<body>
+<h1 class="header-agileits w3 w3l agile-info">Update Service </h1>
+<p class="header-agileits wthree w3-agileits"></p>
+
+<div class="content-w3ls">
+	<div class="form-w3layouts">
+		<form action="#" th:action="@{/update}" th:object="${appel}" method="post">
+			 
+		
+			<div class="form-control"> 
+				<label class="header"> Name <span>:</span></label>
+				<input type="text" id="name" th:field="*{name}" placeholder=" Name" title="Please enter your Full Name" required=""/>
+			</div>
+		
+			<div class="form-control">	
+				<label class="header">Email Address <span>:</span></label>
+				<input type="email" id="email" th:field="*{email}" placeholder="Mail@example.com" title="Please enter a Valid Email Address" required=""/>
+			</div>
+		
+			<div class="form-control">	
+				<label class="header">Site <span>:</span></label>
+				<input type="text" id="bill" th:field="*{site}" placeholder="Site" title="Please enter Your Bill Number" required=""/>
+			</div>
+		
+			<div class="form-control">	
+				<label class="header">Service Code <span>:</span></label>	
+				<input type="text" id="usrtel" th:field="*{serviceCode}" placeholder="Service Code"  required=""/>
+			</div>	
+			
+			<div class="form-control">
+				<label class="enquiry">Description <span>:</span></label>
+				<textarea id="message" th:field="*{description}" placeholder="more details " ></textarea>
+				<div class="clear"></div>
+			</div>
+			
+			<div class="form-control">
+				<label class="enquiry">Answer<span>:</span></label>
+				<textarea id="message" th:field="*{answer}" placeholder="notes and details " ></textarea>
+				<div class="clear"></div>
+			</div>
+			
+			<div class="form-control">
+				<input type="reset" class="reset" value="Reset"/>
+				<input type="submit" class="register" value="Submit" onclick="return confirm('update successfully')"/>
+				<div class="clear"></div>
+			</div>	
+		</form>
+	</div>
+</div>
+
+</body>
+</html>
